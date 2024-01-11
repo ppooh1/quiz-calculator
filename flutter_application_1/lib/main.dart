@@ -35,7 +35,9 @@ class _CalculatorState extends State<Calculator> {
       output = result.toString();
     });
   }
-
+  void primeFunction() {
+    
+  }
   void minusFunction() {
     double firstNumber = double.parse(firstNumberController.text);
     double secondNumber = double.parse(secondNumberController.text);
@@ -77,6 +79,11 @@ class _CalculatorState extends State<Calculator> {
                 ElevatedButton(
                   onPressed: minusFunction,
                   child: Text('-'),
+                ),
+                SizedBox(width:16),
+                ElevatedButton(
+                  onPressed: primeFunction,
+                  child: Text('Check Prime'),
                 ),
               ],
             ),
