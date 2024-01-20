@@ -26,24 +26,34 @@ class _CalculatorState extends State<Calculator> {
   final TextEditingController firstNumberController = TextEditingController();
   final TextEditingController secondNumberController = TextEditingController();
   String output = '';
-
   void plusFunction() {
     double firstNumber = double.parse(firstNumberController.text);
     double secondNumber = double.parse(secondNumberController.text);
     double result = firstNumber + secondNumber;
+    primeFunction(result);
     setState(() {
-      output = result.toString();
+      output = result.toString() + ' ' + primeFunction(result) ;
     });
   }
-  void primeFunction() {
-    
+  String primeFunction(x) {
+    String prime = '';
+    if (x <= 1){
+      return prime = 'not prime';
+    }
+    for(int i =  2; i < x ; i++){
+      if(x % i == 0){
+        return prime = 'not prime';  
+      }
+    }
+    return prime = 'prime';
   }
   void minusFunction() {
     double firstNumber = double.parse(firstNumberController.text);
     double secondNumber = double.parse(secondNumberController.text);
     double result = firstNumber - secondNumber;
+    primeFunction(result);
     setState(() {
-      output = result.toString();
+      output = result.toString() + ' ' + primeFunction(result);
     });
   }
 
@@ -80,11 +90,8 @@ class _CalculatorState extends State<Calculator> {
                   onPressed: minusFunction,
                   child: Text('-'),
                 ),
-                SizedBox(width:16),
-                ElevatedButton(
-                  onPressed: primeFunction,
-                  child: Text('Check Prime'),
-                ),
+                
+                
               ],
             ),
             SizedBox(height: 16), // Add 16px of vertical space
